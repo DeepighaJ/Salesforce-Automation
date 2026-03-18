@@ -1,0 +1,33 @@
+Test Leaf Practise Links
+
+https://www.leafground.com/drag.xhtml
+https://leafground.com/select.xhtml
+https://leafground.com/checkbox.xhtml
+https://leafground.com/radio.xhtml
+https://leafground.com/alert.xhtml
+https://leafground.com/frame.xhtml
+https://leafground.com/window.xhtml
+https://leafground.com/file.xhtml
+
+https://parabank.parasoft.com/parabank/index.htm
+
+https://www.naukri.com/registration/createAccount
+
+http://leaftaps.com/opentaps/control/main
+
+https://login.salesforce.com
+
+https://www.decathlon.in/
+
+https://dev363522.service-now.com/
+
+https://jsonpathfinder.com/ -> copy past json response body and click on the field to get the element
+
+
+// await obj.loadUrl()
+    // await obj.enterUserName("dilipkumar.rajendran@testleaf.com")
+    // await obj.enterPassword("TestLeaf@2025")
+    // await obj.clickOnLogin()
+
+
+

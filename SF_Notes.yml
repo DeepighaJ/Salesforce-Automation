@@ -1,0 +1,19 @@
+Sobjects: /services/data/v58.0/sobjects
+search: /services/data/v58.0/search
+query: /services/data/v58.0/query
+recent: /services/data/v58.0/recent
+
+
+urls: {
+    compactLayouts: '/services/data/v65.0/sobjects/Opportunity/describe/compactLayouts',
+    rowTemplate: '/services/data/v65.0/sobjects/Opportunity/{ID}',
+    approvalLayouts: '/services/data/v65.0/sobjects/Opportunity/describe/approvalLayouts',
+    uiDetailTemplate: 'https://orgfarm-d45a535ff8-dev-ed.develop.my.salesforce.com/{ID}',
+    uiEditTemplate: 'https://orgfarm-d45a535ff8-dev-ed.develop.my.salesforce.com/{ID}/e',
+    listviews: '/services/data/v65.0/sobjects/Opportunity/listviews',
+    describe: '/services/data/v65.0/sobjects/Opportunity/describe',
+    uiNewRecord: 'https://orgfarm-d45a535ff8-dev-ed.develop.my.salesforce.com/006/e',
+    quickActions: '/services/data/v65.0/sobjects/Opportunity/quickActions',
+    layouts: '/services/data/v65.0/sobjects/Opportunity/describe/layouts',
+    sobject: '/services/data/v65.0/sobjects/Opportunity'
+  }
