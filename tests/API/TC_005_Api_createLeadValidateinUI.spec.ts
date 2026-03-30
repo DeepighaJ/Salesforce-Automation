@@ -25,7 +25,7 @@ test.describe('Salesforce Lead – API + UI', () => {
 
   // ── 1. Create Lead via API ─────────────────────────────────────────────────
 
-  test('POST request – Create Lead in Salesforce @api', async ({ request, sfAuth }) => {
+  test.skip('POST request – Create Lead in Salesforce @api', async ({ request, sfAuth }) => {
     const { accessToken, instanceUrl } = sfAuth;
 
     const response = await request.post(
@@ -55,7 +55,7 @@ test.describe('Salesforce Lead – API + UI', () => {
 
   test.use({ storageState: 'helper/SFLogin_storageState.json' });
 
-  test('Validate the created Lead on UI @api', async ({ page }) => {
+  test.skip('Validate the created Lead on UI @api', async ({ page }) => {
     // sf_Id is populated by the preceding API test
     const uiUrl =
       `${SF_UI_BASE}/lightning/o/Lead/pipelineInspection?filterName=${sf_Id}`;

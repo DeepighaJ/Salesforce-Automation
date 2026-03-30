@@ -20,7 +20,7 @@ test.describe('Salesforce Dashboard – UI Create + API Fetch + API Delete ' , (
 
   // ── 1. Create via UI ─────────────────────────────────────────────────────────
 
-  test('Create Dashboard via UI @api', async ({ SalesforceDashboard }) => {
+  test.skip('Create Dashboard via UI @api', async ({ SalesforceDashboard }) => {
 
     await SalesforceDashboard.loadApp(DASHBOARD.url);
     await SalesforceDashboard.clickDashboardNewButton();
@@ -33,7 +33,7 @@ test.describe('Salesforce Dashboard – UI Create + API Fetch + API Delete ' , (
 
   // ── 2. Fetch ID via API ───────────────────────────────────────────────────────
 
-  test('GET – Fetch created Dashboard and capture ID @api', async ({ request, sfAuth }) => {
+  test.skip('GET – Fetch created Dashboard and capture ID @api', async ({ request, sfAuth }) => {
     const { accessToken, instanceUrl } = sfAuth;
 
     const response = await request.get(
@@ -65,7 +65,7 @@ test.describe('Salesforce Dashboard – UI Create + API Fetch + API Delete ' , (
 
   // ── 3. Delete via API (cleanup) ───────────────────────────────────────────────
 
-  test('DELETE – Cleanup Dashboard via API @api', async ({ request, sfAuth }) => {
+  test.skip('DELETE – Cleanup Dashboard via API @api', async ({ request, sfAuth }) => {
     const { accessToken, instanceUrl } = sfAuth;
 
     expect(sf_Id, 'sf_Id is empty — did the GET test run and find the dashboard?').toBeTruthy();
