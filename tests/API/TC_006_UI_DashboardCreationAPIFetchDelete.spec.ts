@@ -9,7 +9,7 @@ let sf_Id: string = '';
 const DASHBOARD = {
   name:        'SalesforcePW Automation Dashboard',
   description: 'Salesforce_Dashboard description test',
-  url:         `${process.env.SF_Instance_Url ?? 'https://orgfarm-d45a535ff8-dev-ed.develop.lightning.force.com'}/lightning/o/Dashboard/home?queryScope=mru`,
+  url:         process.env.SF_Instance_Url as string || 'https://orgfarm-d45a535ff8-dev-ed.develop.lightning.force.com/lightning/o/Dashboard/home?queryScope=mru',
 };
 
 // ── Tests ──────────────────────────────────────────────────────────────────────
@@ -27,7 +27,7 @@ test.describe('Salesforce Dashboard – UI Create + API Fetch + API Delete ' , (
     await SalesforceDashboard.createDashboard(DASHBOARD.name, DASHBOARD.description);
     await SalesforceDashboard.verifyDashboardCreated(DASHBOARD.name);
     await SalesforceDashboard.clickOnSaveandDone();
-    // await SalesforceDashboard.verifyDashboardSaved(DASHBOARD.name);
+    await SalesforceDashboard.verifyDashboardSaved(DASHBOARD.name);
 
   });
 
@@ -89,3 +89,5 @@ test.describe('Salesforce Dashboard – UI Create + API Fetch + API Delete ' , (
   });
 
 });
+
+//'https://orgfarm-d45a535ff8-dev-ed.develop.lightning.force.com/lightning/o/Dashboard/home?queryScope=mru',

@@ -11,7 +11,7 @@ const LOCATORS = {
   nameField:       "//input[@name='Name'] | //input[contains(@class,'name')]",
   descField:       "//textarea[@name='Description'] | //textarea[contains(@class,'description')]",
   createBtn:       "//button[text()='Create']",
-  dashboardHeader: (name: string) => `//lightning-formatted-text[text()='${name}']`,
+  dashboardHeader: (name: string) => `//span[text()='${name}']`,
   saveBtn:         "//button[text()='Save']",
   doneBtn:         "//button[text()='Done']",
   savedHeading:    "//h1 | //h2",
@@ -58,8 +58,11 @@ export class DashboardPage extends SFAppLauncher {
   }
 
   async verifyDashboardSaved(dashboardName: string) {
-    await this.wait('minWait');
-    await expect(this.frame.getByRole('heading')).toContainText(dashboardName);
+   // await this.wait('minWait');
+    // await expect(this.frame.getByRole('heading')).toContainText(dashboardName);
+    const header = this.frame.locator(LOCATORS.dashboardHeader(dashboardName));
+    await expect(header).toBeVisible({ timeout: 10000 });
+    console.log(`[DashboardPage] Dashboard header verified: ${dashboardName}`);
   }
 
 }

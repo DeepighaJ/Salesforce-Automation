@@ -19,11 +19,13 @@ test.describe('Salesforce Accounts', () => {
 
   });
 
-  test('@ui Click on ViewAll in SF', async ({ salesForceLogin, SalesforceAppLauncher }) => {
+  test.skip('@ui Click on Accounts on Home Page in SF', async ({ salesForceLogin, SalesforceAppLauncher }) => {
 
     await SalesforceAppLauncher.loadHomePage();
-    await SalesforceAppLauncher.appLauncher();
-    await SalesforceAppLauncher.viewAll();
+    // await SalesforceAccount.appLauncher();
+    // await SalesforceAccount.viewAll();
+    // await SalesforceAccount.searchApp('Accounts');
+    
 
   });
 

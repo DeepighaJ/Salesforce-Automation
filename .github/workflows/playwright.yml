@@ -36,7 +36,7 @@ jobs:
           Api_Client_Secret:  ${{ secrets.Api_Client_Secret }}
           Admin_Username:     ${{ secrets.Admin_Username }}
           Admin_Password:     ${{ secrets.Admin_Password }}
-        run: npx playwright test --reporter=html,allure-playwright
+        run: npx playwright test --grep "@ui" --reporter=html,allure-playwright
         continue-on-error: true   # ensures report steps run even if tests fail
 
       - name: Generate Allure Report

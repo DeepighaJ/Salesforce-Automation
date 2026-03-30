@@ -6,43 +6,37 @@
     "password": "TestLeaf@2025",
     "expectedError": ""
   },
+   
   {
     "tCID": "TC002",
-    "scenario": "valid",
-    "username": "manikandanleo4922@agentforce.com",
-    "password": "India@2026",
-    "expectedError": ""
-  },
-  {
-    "tCID": "TC003",
     "scenario": "invalid_password",
     "username": "dilipkumar.rajendran@testleaf.com",
     "password": "WrongPassword@999",
     "expectedError": "Please check your username and password"
   },
   {
-    "tCID": "TC004",
+    "tCID": "TC003",
     "scenario": "invalid_username",
     "username": "notauser@invalid.com",
     "password": "SomePassword@123",
     "expectedError": "Please check your username and password"
   },
   {
-    "tCID": "TC005",
+    "tCID": "TC004",
     "scenario": "empty_username",
     "username": "",
     "password": "TestLeaf@2025",
     "expectedError": "Please enter your username"
   },
   {
-    "tCID": "TC006",
+    "tCID": "TC005",
     "scenario": "empty_password",
     "username": "dilipkumar.rajendran@testleaf.com",
     "password": "",
     "expectedError": "Please enter your password"
   },
   {
-    "tCID": "TC007",
+    "tCID": "TC006",
     "scenario": "empty_both",
     "username": "",
     "password": "",

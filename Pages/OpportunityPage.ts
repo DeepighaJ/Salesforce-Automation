@@ -7,9 +7,9 @@ const LOCATORS = {
   newButton:       "//a[@title='New'] | //div[@role='button' and .//span[text()='New']]",
   oppName:         "//input[@name='Name']",
   closeDate:       "//input[@name='CloseDate']",
-  stageDropdown:   "//button[@name='StageName']",
+  stageDropdown:   "//button[@aria-label='Stage']/span[text()='--None--']",
   accountCombo:    "//input[contains(@id,'combobox-input') and @aria-label='Account Name']",
-  accountOption:   (name: string) => `//lightning-base-combobox-item//span[@title='${name}']`,
+  accountOption:   (name: string) => `(//lightning-base-combobox-item[contains(@class,'listbox__option_entity')]//lightning-base-combobox-formatted-text[@title='${name}'])[1]`,
   stageOption:     (stage: string) => `//lightning-base-combobox-item//span[@title='${stage}']`,
   saveButton:      "//button[@name='SaveEdit']",
   oppHeader:       "//slot[@name='primaryField']//lightning-formatted-text",
@@ -67,10 +67,11 @@ export class OpportunityPage extends SFHomePage {
   async fillOpportunityForm(name: string, closeDate: string, accountName: string, stage?: string) {
     await this.fillOpportunityName(name);
     await this.fillCloseDate(closeDate);
+     await this.selectAccountName(accountName);
     if (stage) {
       await this.selectStage(stage);
     }
-    await this.selectAccountName(accountName);
+   
   }
 
   async saveOpportunity() {

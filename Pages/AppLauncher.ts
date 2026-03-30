@@ -8,7 +8,7 @@ export class SFAppLauncher extends SFHomePage{
     }
     async searchApp(appName:string){
         await this.page.getByPlaceholder("Search apps or items...").pressSequentially(appName)
-        await this.page.waitForTimeout(40000)
+        //await this.page.locator("//p/mark[text()='"+appName+"']").waitFor({timeout:3000})     
         await this.page.locator("//p/mark[text()='"+appName+"']").click()        
     }
 

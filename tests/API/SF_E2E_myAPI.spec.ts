@@ -94,37 +94,61 @@ test.describe('Salesforce E2E – Account + Opportunity flow', () => {
   });
 
   // ── 4. Cleanup – Delete Opportunity then Account ─────────────────────────────
+  test('DELETE – Cleanup Opportunity and Account', async ({ request, sfAuth }) => {
+  const { accessToken, instanceUrl } = sfAuth;
 
-  test('DELETE – Cleanup Opportunity and Account @api', async ({ request, sfAuth }) => {
-    const { accessToken, instanceUrl } = sfAuth;
+  // ── Step 1: Delete Opportunity ───────────────────────────────────────────
+  const deleteOpp = await request.delete(
+    `${instanceUrl}/services/data/v65.0/sobjects/Opportunity/${opportunityId}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+  expect(deleteOpp.status()).toBe(204);
+  console.log('[Cleanup] Opportunity deleted:', opportunityId);
 
-    const deleteOpportunity = await request.delete(
-      `${instanceUrl}/services/data/v65.0/sobjects/Opportunity/${opportunityId}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
+  // ── Step 2: Find and Delete all Contacts linked to Account ───────────────
+  const contactQuery = await request.get(
+    `${instanceUrl}/services/data/v65.0/query?q=SELECT+Id+FROM+Contact+WHERE+AccountId='${accountId}'`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+
+  const contactBody = await contactQuery.json();
+  console.log('[Cleanup] Contacts found:', contactBody.totalSize);
+
+  for (const contact of contactBody.records ?? []) {
+    await request.delete(
+      `${instanceUrl}/services/data/v65.0/sobjects/Contact/${contact.Id}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
     );
+    console.log('[Cleanup] Contact deleted:', contact.Id);
+  }
 
-    expect(
-      deleteOpportunity.ok(),
-      `Opportunity delete failed: ${deleteOpportunity.status()}`
-    ).toBeTruthy();
+  // ── Step 3: Find and Delete all Cases linked to Account ──────────────────
+  const caseQuery = await request.get(
+    `${instanceUrl}/services/data/v65.0/query?q=SELECT+Id+FROM+Case+WHERE+AccountId='${accountId}'`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
 
-    console.log('[Cleanup] Opportunity deleted :', opportunityId);
-
-    const deleteAccount = await request.delete(
-      `${instanceUrl}/services/data/v65.0/sobjects/Account/${accountId}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
+  const caseBody = await caseQuery.json();
+  for (const c of caseBody.records ?? []) {
+    await request.delete(
+      `${instanceUrl}/services/data/v65.0/sobjects/Case/${c.Id}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
     );
+    console.log('[Cleanup] Case deleted:', c.Id);
+  }
 
-    expect(
-      deleteAccount.ok(),
-      `Account delete failed: ${deleteAccount.status()}`
-    ).toBeTruthy();
+  // ── Step 4: Now safe to delete Account ───────────────────────────────────
+  const deleteAccount = await request.delete(
+    `${instanceUrl}/services/data/v65.0/sobjects/Account/${accountId}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
 
-    console.log('[Cleanup] Account deleted :', accountId);
-  });
+  expect(
+    deleteAccount.status(),
+    `Account delete failed: ${deleteAccount.status()}`
+  ).toBe(204);
+
+  console.log('[Cleanup] Account deleted:', accountId);
+});
 
 });

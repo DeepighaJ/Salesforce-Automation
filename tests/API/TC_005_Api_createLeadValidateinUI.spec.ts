@@ -11,9 +11,9 @@ let sf_Id: string = '';
 // ── Test Data ──────────────────────────────────────────────────────────────────
 
 const leadPayload = {
-  firstname: 'SDp112',
-  lastname:  'JM',
-  company:   'Acl',
+  firstname: 'Garima',
+  lastname:  'Raj',
+  company:   'AclTest',
 };
 
 const SF_UI_BASE =
@@ -75,7 +75,7 @@ test.describe('Salesforce Lead – API + UI', () => {
     const linkCount = await leadLink.count();
 
     console.log('[UI Validation] Lead link count :', linkCount);
-    console.log('[UI Validation] All links        :', await page.getByRole('link').allTextContents());
+    console.log('[UI Validation] All links        :', await page.getByRole('link', { name: leadPayload.firstname }).allTextContents());
 
     // Click the correct instance of the lead link
     if (linkCount === 1) {

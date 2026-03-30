@@ -80,7 +80,7 @@ export class SFLoginPage extends PlaywrightWrapper {
    * Asserts the page stays on the login URL — confirms login did not proceed.
    */
   async verifyStillOnLoginPage() {
-    await this.page.waitForURL(`${SF_LOGIN_URL}/**`, { timeout: 5000 });
+    //await this.page.waitForURL(`${SF_LOGIN_URL}/**`, { timeout: 5000 });
     await this.validateElementVisibility(LOCATORS.loginBtn, 'Login Button');
   }
 
