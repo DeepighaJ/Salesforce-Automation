@@ -30,10 +30,10 @@ jobs:
           SF_Username:        ${{ secrets.SF_Username }}
           SF_Password:        ${{ secrets.SF_Password }}
           SF_Url:             ${{ secrets.SF_Url }}
-          Api_Username:       ${{ secrets.Api_Username }}
-          Api_Password:       ${{ secrets.Api_Password }}
-          Api_Client_Id:      ${{ secrets.Api_Client_Id }}
-          Api_Client_Secret:  ${{ secrets.Api_Client_Secret }}
+          Api_Username:       ${{ secrets.API_USERNAME }}
+          Api_Password:       ${{ secrets.API_PASSWORD }}
+          Api_Client_Id:      ${{ secrets.API_CLIENT_ID }}
+          Api_Client_Secret:  ${{ secrets.API_CLIENT_SECRET }}
           Admin_Username:     ${{ secrets.Admin_Username }}
           Admin_Password:     ${{ secrets.Admin_Password }}
         run: npx playwright test --grep "@api" --reporter=html,allure-playwright

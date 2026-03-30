@@ -3,10 +3,15 @@
 import { test as base, APIRequestContext } from '@playwright/test';
 
 // ── Credentials — loaded from Login.env locally, GitHub Secrets on CI ─────
- const Api_Username = process.env.Api_Username!;
- const Api_Password = process.env.Api_Password!;
- const Api_Client_Id = process.env.Api_Client_Id!;
- const Api_Client_Secret = process.env.Api_Client_Secret!;
+//  const Api_Username = process.env.Api_Username!;
+//  const Api_Password = process.env.Api_Password!;
+//  const Api_Client_Id = process.env.Api_Client_Id!;
+//  const Api_Client_Secret = process.env.Api_Client_Secret!;
+
+ const Api_Username = process.env.API_USERNAME!;
+ const Api_Password = process.env.API_PASSWORD!;
+ const Api_Client_Id = process.env.API_CLIENT_ID!;
+ const Api_Client_Secret = process.env.API_CLIENT_SECRET!;
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
