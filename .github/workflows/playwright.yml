@@ -39,6 +39,17 @@ jobs:
         run: npx playwright test --grep "@api" --reporter=html,allure-playwright
         continue-on-error: true   # ensures report steps run even if tests fail
 
+
+      - name: Debug env vars
+        run: |
+          echo "Client ID exists: ${{ secrets.Api_Client_Id != '' }}"
+          echo "Client Secret exists: ${{ secrets.Api_Client_Secret != '' }}"
+          echo "Username exists: ${{ secrets.Api_Username != '' }}"
+        env:
+          Api_Client_Id: ${{ secrets.Api_Client_Id }}
+          Api_Client_Secret: ${{ secrets.Api_Client_Secret }}
+          Api_Username: ${{ secrets.Api_Username }}
+
       - name: Generate Allure Report
         if: always()
         run: npx allure generate allure-results --clean -o allure-report

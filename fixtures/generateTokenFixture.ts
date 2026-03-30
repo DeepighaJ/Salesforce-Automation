@@ -42,9 +42,11 @@ async function generateSFToken(request: APIRequestContext): Promise<{ accessToke
   );
 
   if (!response.ok()) {
-    throw new Error(
-      `Token generation failed: ${response.status()} ${response.statusText()}`
-    );
+  const errorBody = await response.text();   // ← add this
+  console.error(`Token error response: ${errorBody}`);  // ← add this
+  throw new Error(
+    `Token generation failed: ${response.status()} ${response.statusText()} — ${errorBody}`
+  );
   }
 
   const body = await response.json();
