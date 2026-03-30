@@ -1,0 +1,4 @@
+Successfully loaded the URL: https://login.salesforce.com/?locale=in
+Login Button is visible as expected.
+Error: Please check your username and password. If you still can't log in, contact your Salesforce administrator.
+[TC003] ✓ Error verified: "Please check your username and password"
