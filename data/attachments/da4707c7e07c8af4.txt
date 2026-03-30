@@ -1,0 +1,3 @@
+Successfully loaded the URL: https://testleaf.lightning.force.com/lightning/o/Opportunity/list
+[TC_004] Creating Opportunity — Name: AutoOpp TwENph | Close Date: 21/04/2026 | Stage: Prospecting | Account: Deepigha
+AutoOpp TwENph

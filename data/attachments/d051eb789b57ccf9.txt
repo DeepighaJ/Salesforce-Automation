@@ -1,0 +1,3 @@
+Successfully loaded the URL: https://login.salesforce.com/?locale=in
+App Launcher (waffle icon) is visible as expected.
+[TC001] ✓ Login successful as: dilipkumar.rajendran@testleaf.com
